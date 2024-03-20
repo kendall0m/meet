@@ -2,19 +2,19 @@
 The Meet App is a serverless web application using React and a test-driven development technique. The application uses the Google Calendar API to fetch upcoming events.
 ## User Stories & Scenarios
 ## Feature 1: Filter Events By City
-As a user,
+As a user, I should be able to filter events by city so that I can see the events in only that city.
 ### Scenario 1: When user hasn’t searched for a city, show upcoming events from all cities.
-Given
-When
-Then
+Given the user hasn't searched for a city, 
+When displaying events,
+Then events from all cities will show.
 ### Scenario 2: User should see a list of suggestions when they search for a city.
-Given
-When
-Then
+Given the user is in the events app,  
+When they begin searching for a city, 
+Then a list of suggestions should come up.
 ### Scenario 3: User can select a city from the suggested list.
-Given 
-When 
-Then 
+Given the user is in the events app, 
+When they select a city from a suggested list, 
+Then they should see a list of events in that city.
 
 ## Feature 2: Show/Hide Event Details
 As a user,
