@@ -67,3 +67,6 @@ Given the user is in the app,
 When the user selectts the chart to show,
 Then the number of upcoming events in each city will display.
 
+## On serverless functions
+The Meet app will be using serverless functions to process data and utilize the Google Calendar API in order to locate events. Serverless technology has many benefits including scalability; cost effectiveness; and fast, easy deployment. 
+
