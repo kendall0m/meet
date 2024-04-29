@@ -1,6 +1,7 @@
 // src/__tests__/App.test.js
 import userEvent from '@testing-library/user-event';
 import { render, within } from '@testing-library/react';
+import { getEvents } from '../api';
 import App from '../App';
 
 describe('<App /> component', () => {
