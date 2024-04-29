@@ -47,8 +47,8 @@ const CitySearch = ({ allLocations }) => {
         : null
       }
     </div>
- )
-}
+  )
+};
 
 
 
