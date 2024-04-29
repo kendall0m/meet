@@ -22,3 +22,6 @@ describe('<App /> component', () => {
   })
 
 });
+
+//integration testing
+
