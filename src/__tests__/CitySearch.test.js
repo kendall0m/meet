@@ -1,8 +1,7 @@
-// src/__tests__/CitySearch.test.js
-
-import { render } from '@testing-library/react';
+import { render, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import CitySearch from '../components/CitySearch';
+import App from '../App';
 import { extractLocations, getEvents } from '../api';
 
 describe('<CitySearch /> component', () => {
@@ -10,6 +9,7 @@ describe('<CitySearch /> component', () => {
   beforeEach(() => {
     CitySearchComponent = render(<CitySearch />);
   });
+
   test('renders text input', () => {
     const cityTextBox = CitySearchComponent.queryByRole('textbox');
     expect(cityTextBox).toBeInTheDocument();
@@ -70,4 +70,24 @@ describe('<CitySearch /> component', () => {
     expect(cityTextBox).toHaveValue(BerlinGermanySuggestion.textContent);
   });
   
+});
+
+//integration testing
+
+describe('<CitySearch /> integration', () => {
+  test('renders suggestions list when the app is rendered.', async () => {
+    const user = userEvent.setup();
+    const AppComponent = render(<App />);
+    const AppDOM = AppComponent.container.firstChild;
+
+    const CitySearchDOM = AppDOM.querySelector('#city-search');
+    const cityTextBox = within(CitySearchDOM).queryByRole('textbox');
+    await user.click(cityTextBox);
+
+    const allEvents = await getEvents();
+    const allLocations = extractLocations(allEvents);
+
+    const suggestionListItems = within(CitySearchDOM).queryAllByRole('listitem');
+    expect(suggestionListItems.length).toBe(allLocations.length + 1);
+ });
 });
