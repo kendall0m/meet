@@ -10,6 +10,7 @@ describe('<Event /> component', () => {
     beforeEach(() => {
         EventComponent = render(<Event event={event} />);
     });
+
   test('has event title', () => {
     expect(EventComponent.queryByText(event.summary)).toBeInTheDocument();
   });
@@ -48,6 +49,5 @@ describe('<Event /> component', () => {
     expect(hideButton).not.toBeInTheDocument();
 
   })
-
   
 });
