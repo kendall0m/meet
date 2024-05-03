@@ -11,19 +11,19 @@ beforeEach(() => {
     EventComponent = render(<Event event={event} />);
 });
 
-test('has event title', () => {
+test('renders the event title', () => {
     expect(EventComponent.queryByText(event.summary)).toBeInTheDocument();
 });
 
-test('has event created time', () => {
+test('renders the event time', () => {
     expect(EventComponent.queryByText(event.created)).toBeInTheDocument();
 });
 
-test('has event location', () => {
+test('renders the event location', () => {
     expect(EventComponent.queryByText(event.location)).toBeInTheDocument();
 });
 
-test('has button show details', () => {
+test('renders button to show details', () => {
     expect(EventComponent.queryByText('Show Details')).toBeInTheDocument();
 });
 
