@@ -31,4 +31,5 @@ describe('<EventList /> integration', () => {
       expect(EventListItems.length).toBe(32);
     });
   });
+  
 });
