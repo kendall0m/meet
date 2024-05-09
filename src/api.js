@@ -16,14 +16,6 @@ export const extractLocations = (events) => {
   return locations;
 };
 
-const checkToken = async (accessToken) => {
-    const response = await fetch(
-        `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`
-    );
-    const result = await response.json();
-    return result;
-};
-
 /**
  *
  * This function will fetch the list of all events
@@ -87,6 +79,14 @@ const removeQuery = () => {
         newurl = window.location.protocol + "//" + window.location.host;
         window.history.pushState("", "", newurl);
     }
+};
+
+const checkToken = async (accessToken) => {
+  const response = await fetch(
+      `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`
+  );
+  const result = await response.json();
+  return result;
 };
 
 const getToken = async (code) => {
