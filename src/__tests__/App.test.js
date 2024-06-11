@@ -8,7 +8,7 @@ describe('<App /> component', () => {
   let AppDOM;
   beforeEach(() => {
     AppDOM = render(<App />).container.firstChild;
-  })
+  });
 
   test('renders list of events', () => {
     expect(AppDOM.querySelector('#event-list')).toBeInTheDocument();
@@ -20,7 +20,7 @@ describe('<App /> component', () => {
 
   test('render number of events', () => {
     expect(AppDOM.querySelector('#number-of-events')).toBeInTheDocument();
-  })
+  });
 
 });
 
