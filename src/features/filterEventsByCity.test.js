@@ -8,8 +8,8 @@ const feature = loadFeature('./src/features/filterEventsByCity.feature');
 
 defineFeature(feature, test => {
     // Scenario 1
-    test('When user hasn’t searched for a city, show upcoming events from all cities.', ({ given, when, then }) => {
-        given('user hasn’t searched for any city', () => {
+    test('When user hasnt searched for a city, show upcoming events from all cities.', ({ given, when, then }) => {
+        given('user hasnt searched for any city', () => {
 
         });
 
@@ -46,7 +46,7 @@ defineFeature(feature, test => {
             await user.type(citySearchInput, "Berlin");
         });
 
-        then('the user should recieve a list of cities (suggestions) that match what they’ve typed', async () => {
+        then('the user should recieve a list of cities (suggestions) that match what theyve typed', async () => {
             const suggestionListItems = within(CitySearchDOM).queryAllByRole('listitem'); 
             expect(suggestionListItems).toHaveLength(2);
         });

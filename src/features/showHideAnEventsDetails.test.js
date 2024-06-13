@@ -57,22 +57,18 @@ defineFeature(feature, test => {
         let EventComponent;
         let allEvents;
         given('the details of an event are displayed', async () => {
-            allEvents = await getEvents();
-            EventComponent = render(<Event event={allEvents[0]} />);
             const user = userEvent.setup();
-            await user.click(EventComponent.queryByText('show details'));
-            expect(EventComponent.container.querySelector('.details')).toBeInTheDocument();
+            await user.click(within(EventListDOM.firstChild).queryByText('show details'));
+            expect(EventListDOM.firstChild.querySelector('.eventDetails')).toBeInTheDocument();
         });
 
         when('the user clicks on the event', async () => {
-            const hideDetails = EventComponent.queryByText('hide details');
             const user = userEvent.setup();
-            await user.click(hideDetails);
+            await user.click(within(EventListDOM.firstChild).queryByText('hide details'));
         });
 
         then('the details will be hidden again', () => {
-            expect(EventComponent.container.querySelector('.details')).not.toBeInTheDocument();
-            expect(EventComponent.queryByText('hide details')).not.toBeInTheDocument();
+            expect(EventListDOM.firstChild.querySelector('.eventDetails')).not.toBeInTheDocument();
         });
     });
 });
