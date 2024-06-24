@@ -1,34 +1,37 @@
 import { useState } from "react";
 
 const NumberOfEvents = ({ setCurrentNOE, setErrorAlert }) => {
+    const [numberEvents, setNumberEvents] = useState(32);
 
-  const [numEvents, setNumEvents] = useState("32");
+    const handleInputChange = (event) => {
 
-  const handleInputChanged = (event) => {
-    const value = event.target.value;
-    setNumEvents(value);
+        let errorText;
+        const value = event.target.value;
+        setNumberEvents(value);
 
-    let infoText;
-    if (isNaN(value) || value <= 0) {
-      infoText = "Only positive numbers are allowed"
-    } else {
-      infoText = "";
-      setCurrentNOE(value);
+        if (isNaN(value) || value > 100 || value <= 0) {
+            errorText = "Please enter a number between 1 and 100";
+            setErrorAlert(errorText);
+        } else {
+            setErrorAlert("");
+            setCurrentNOE(value);
+        }
     }
-    setErrorAlert(infoText);
-  }
 
-  return (
-    <div id="number-of-events">
-      <label htmlFor="number-of-events-input">Number of Events: </label>
-      <input
-        type="text"
-        className="number-of-events-input"
-        value={numEvents}
-        onChange={handleInputChanged}
-      />
-    </div>
-  );
+    return (
+        <div id="number-of-events">
+            <p>Number of Events:</p>
+            <p id="infoText">enter number between 1 and 100</p>
+            <input
+                className="numberOfEvents"
+                value={numberEvents}
+                id="numberInput"
+                type="number"
+                min="1" max="100" step="1"
+                onChange={handleInputChange}
+            />
+        </div>
+    );
 }
 
 export default NumberOfEvents;

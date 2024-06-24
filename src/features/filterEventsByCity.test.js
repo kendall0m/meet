@@ -10,7 +10,7 @@ defineFeature(feature, test => {
     // Scenario 1
     test('When user hasnt searched for a city, show upcoming events from all cities.', ({ given, when, then }) => {
         given('user hasnt searched for any city', () => {
-
+            //no code here, user has not searched for anything
         });
 
         let AppComponent;

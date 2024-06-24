@@ -11,6 +11,7 @@ Feature: Show/Hide Event Details
   Then the details of the event will be displayed
 
  Scenario: Event is collapsed to hide details
-  Given the details of an event are displayed
+  Given the app is open 
+  And one event has been expanded 
   When the user clicks on the event
   Then the details will be hidden again

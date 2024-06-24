@@ -8,12 +8,14 @@ import './App.css';
 const App = () => {
   const [allLocations, setAllLocations] = useState([]);
   const [currentNOE, setCurrentNOE] = useState(32);
+  
   const [events, setEvents] = useState([]);
   const [currentCity, setCurrentCity] = useState("See all cities");
 
   useEffect(() => {
     fetchData();
-  }, [currentCity]);
+    //Added currentNoe
+  }, [currentCity, currentNOE]);
 
   const fetchData = async () => {
     const allEvents = await getEvents();
@@ -26,9 +28,18 @@ const App = () => {
 
   return (
     <div className="App">
-      <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity} />
-      <NumberOfEvents />
-      <EventList events={events} />
+      <CitySearch 
+        allLocations={allLocations} 
+        setCurrentCity={setCurrentCity} 
+      />
+
+      <NumberOfEvents 
+        setCurrentNOE={setCurrentNOE}
+        
+      />
+      <EventList 
+        events={events} 
+      />
     </div>
   );
 }

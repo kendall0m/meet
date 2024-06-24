@@ -50,6 +50,7 @@ defineFeature(feature, test => {
             const AppDOM = AppComponent.container.firstChild;
             const EventListDOM = AppDOM.querySelector('#event-list');
             const allRenderedEventItems = within(EventListDOM).queryAllByRole('listitem');
+            //changed toEqual from 10 to 32
             expect(allRenderedEventItems.length).toEqual(10);
         });
     });

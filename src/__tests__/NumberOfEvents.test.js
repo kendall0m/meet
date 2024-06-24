@@ -2,25 +2,27 @@ import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import NumberOfEvents from "../components/NumberOfEvents";
 
-describe ('<Event /> component', () => {
+describe('<NumberOfEvents /> component', () => {
     let NumberOfEventsComponent;
     beforeEach(() => {
-        NumberOfEventsComponent = render(<NumberOfEvents setCurrentNOE={() => { }} setErrorAlert={() => { }} />);
-    })
+        NumberOfEventsComponent = render(<NumberOfEvents setCurrentNOE={() => { }} />);
+    });
 
     test('contains element with the role textbox', () => {
-        expect(NumberOfEventsComponent.queryByRole("textbox")).toBeInTheDocument();
+        const numberInput = NumberOfEventsComponent.queryByRole('spinbutton');
+        expect(numberInput).toBeInTheDocument();
+        expect(numberInput).toHaveClass('numberOfEvents');
     });
 
     test('renders the default value of the input field as 32', () => {
-        expect(NumberOfEventsComponent.queryByRole('textbox')).toHaveValue('32');
+        const numberInput = NumberOfEventsComponent.queryByRole('spinbutton');
+        expect(numberInput.value).toBe('32');
     });
 
     test('value of the components textbox changes accordingly when a user types it in', async () => {
-        const numberOfEvents = NumberOfEventsComponent.queryByRole('textbox');
+        const numberInput = NumberOfEventsComponent.queryByRole('spinbutton');
         const user = userEvent.setup();
-        await user.type(numberOfEvents, '{backspace}{backspace}10');
-        expect(numberOfEvents).toHaveValue('10');
+        await user.type(numberInput, '{backspace}{backspace}10');
+        expect(numberInput.value).toBe('10');
     });
-
 });
