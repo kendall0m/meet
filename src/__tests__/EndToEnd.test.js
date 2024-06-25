@@ -24,13 +24,11 @@ describe('show/hide an event details', () => {
     });
 
     test('Show event details', async () => {
-        // await page.click('.event .details-btn');
         const eventDetails = await page.$('.event .details');
         expect(eventDetails).toBeDefined();
     });
 
     test('Details are collapsed', async () => {
-        // await page.click('.event .details-btn');
         const eventDetails = await page.$('.event .details');
         expect(eventDetails).toBeNull();
     });
