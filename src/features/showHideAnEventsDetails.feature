@@ -5,13 +5,12 @@ Feature: Show/Hide Event Details
   When displaying the list of events
   Then the details are hidden by default
 
- Scenario: Event is expanded to view details
+ Scenario: Show event details
   Given the user is viewing the events
-  When the user clicks on an event
+  When the user clicks on Show Details button
   Then the details of the event will be displayed
 
- Scenario: Event is collapsed to hide details
-  Given the app is open 
-  And one event has been expanded 
-  When the user clicks on the event
+ Scenario: Details are collapsed
+  Given one event has details expanded 
+  When the user clicks Hide Details button
   Then the details will be hidden again

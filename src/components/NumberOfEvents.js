@@ -6,14 +6,16 @@ const NumberOfEvents = ({ setCurrentNOE, setErrorAlert }) => {
     const handleInputChange = (event) => {
 
         let errorText;
+        let infoText;
         const value = event.target.value;
         setNumberEvents(value);
 
         if (isNaN(value) || value > 100 || value <= 0) {
-            errorText = "Please enter a number between 1 and 100";
-            setErrorAlert(errorText);
+            infoText = "Please pick a number between 1 and 100";
+            setErrorAlert(infoText);
         } else {
-            setErrorAlert("");
+            infoText = "";
+            setErrorAlert(infoText);
             setCurrentNOE(value);
         }
     }

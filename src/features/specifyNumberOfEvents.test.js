@@ -8,25 +8,23 @@ const feature = loadFeature('./src/features/specifyNumberOfEvents.feature');
 defineFeature(feature, test => {
     test('32 events are shown by default', ({ given, when, then }) => {
         given('the user has opened the app', () => {
-
+            AppComponent = render(<App />);
         });
 
         let AppComponent;
-        when('viewing the events section', () => {
-            AppComponent = render(<App />);
-            const AppDOM = AppComponent.container.firstChild;
-            const EventListDOM = AppDOM.querySelector('#event-list');
-            expect(EventListDOM).toBeInTheDocument();
-        });
+        let eventList;
+        when('viewing the events section', async () => {
 
-        then('32 events are shown by default', async (arg0) => {
-            const AppDOM = AppComponent.container.firstChild;
-            const EventListDOM = AppDOM.querySelector('#event-list');
-            await waitFor(() => {
-                const EventListItems = within(EventListDOM).queryAllByRole('listitem');
-                expect(EventListItems.length).toBe(32);
-            });
-        });
+			const AppDOM = AppComponent.container.firstChild;
+			await waitFor(() => {
+				eventList = within(AppDOM).queryAllByRole('listitem');
+				expect(eventList[0]).toBeTruthy();
+			});
+		});
+
+		then('32 events are shown', () => {
+			expect(eventList.length).toEqual(32);
+		});
     });
 
     test('The user can specify the number of events', ({ given, when, then }) => {
@@ -50,7 +48,6 @@ defineFeature(feature, test => {
             const AppDOM = AppComponent.container.firstChild;
             const EventListDOM = AppDOM.querySelector('#event-list');
             const allRenderedEventItems = within(EventListDOM).queryAllByRole('listitem');
-            //changed toEqual from 10 to 32
             expect(allRenderedEventItems.length).toEqual(10);
         });
     });
