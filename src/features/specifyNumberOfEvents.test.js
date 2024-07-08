@@ -7,12 +7,13 @@ const feature = loadFeature('./src/features/specifyNumberOfEvents.feature');
 
 defineFeature(feature, test => {
     test('32 events are shown by default', ({ given, when, then }) => {
+        let AppComponent;
+        let eventList;
         given('the user has opened the app', () => {
             AppComponent = render(<App />);
         });
 
-        let AppComponent;
-        let eventList;
+        
         when('viewing the events section', async () => {
 
 			const AppDOM = AppComponent.container.firstChild;
@@ -34,7 +35,7 @@ defineFeature(feature, test => {
             AppComponent = render(<App />);
             const AppDOM = AppComponent.container.firstChild;
             const NumberOfEventsDOM = AppDOM.querySelector('#number-of-events');
-            const numberOfEventsInput = within(NumberOfEventsDOM).queryByRole('spinbutton');
+            const numberOfEventsInput = within(NumberOfEventsDOM).queryByRole('textbox');
             await user.type(numberOfEventsInput, '{backspace}{backspace}10');
         });
 

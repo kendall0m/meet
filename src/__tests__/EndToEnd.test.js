@@ -14,8 +14,8 @@ describe('show/hide an event details', () => {
         await page.waitForSelector('.event');
     });
 
-    afterAll(() => {
-        browser.close();
+    afterAll(async () => {
+        await browser.close();
     });
 
     test('Details are collapsed by default', async () => {
