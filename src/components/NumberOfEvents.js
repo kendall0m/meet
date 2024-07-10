@@ -4,8 +4,6 @@ const NumberOfEvents = ({ setCurrentNOE, setErrorAlert }) => {
     const [numberEvents, setNumberEvents] = useState(32);
 
     const handleInputChange = (event) => {
-
-        let errorText;
         let infoText;
         const value = event.target.value;
         setNumberEvents(value);
