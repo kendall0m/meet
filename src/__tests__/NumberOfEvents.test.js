@@ -9,7 +9,9 @@ describe('<NumberOfEvents /> component', () => {
     beforeEach(() => {
         NumberOfEventsComponent = render(<NumberOfEvents 
             setCurrentNOE={() => { }} 
-            setErrorAlert={() => { }} />);
+            setErrorAlert={() => { }} 
+            setInfoAlert={() => { }}
+            />);
     });
 
     test('contains element with the role textbox', () => {
